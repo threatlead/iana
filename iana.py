@@ -51,8 +51,9 @@ class Tld:
         # -- nameserver
         for row in pq.find('table.iana-table > tbody > tr').items():
             nameserver = row('td').eq(0).text().strip()
-            ipaddress = row('td').eq(1).text().strip()
-            self.nameservers.append((nameserver, ipaddress))
+            for ipaddress in row('td').eq(1).text().strip().split(' '):
+                if re.match('[\d\.]{2,16}', ipaddress) or re.match('[0-9a-z\:]{15,}', ipaddress):  # todo - better regex
+                    self.nameservers.append((nameserver, ipaddress))
         # -- dates
         date_items = pq('div#main_right > p > i').text()
         match = Tld.RE_LAST_UPDATE.search(date_items)

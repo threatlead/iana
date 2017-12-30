@@ -49,12 +49,19 @@ print(vars(iana[0]))
     'type': 'generic',
     'description': 'American Automobile Association, Inc.',
     'nameservers': [
-        ('ns6.dns.nic.aaa', '156.154.158.2 2610:a1:1076:0:0:0:0:2'),
-        ('ns4.dns.nic.aaa', '156.154.156.2 2610:a1:1074:0:0:0:0:2'),
-        ('ns2.dns.nic.aaa', '156.154.145.2 2610:a1:1072:0:0:0:0:2'),
-        ('ns3.dns.nic.aaa', '156.154.159.2 2610:a1:1073:0:0:0:0:2'),
-        ('ns1.dns.nic.aaa', '156.154.144.2 2610:a1:1071:0:0:0:0:2'),
-        ('ns5.dns.nic.aaa', '156.154.157.2 2610:a1:1075:0:0:0:0:2')],
+        ('ns6.dns.nic.aaa', '156.154.158.2'),
+        ('ns6.dns.nic.aaa', '2610:a1:1076:0:0:0:0:2'),
+        ('ns4.dns.nic.aaa', '156.154.156.2'),
+        ('ns4.dns.nic.aaa', '2610:a1:1074:0:0:0:0:2'),
+        ('ns2.dns.nic.aaa', '156.154.145.2'),
+        ('ns2.dns.nic.aaa', '2610:a1:1072:0:0:0:0:2'),
+        ('ns3.dns.nic.aaa', '156.154.159.2'),
+        ('ns3.dns.nic.aaa', '2610:a1:1073:0:0:0:0:2'),
+        ('ns1.dns.nic.aaa', '156.154.144.2'),
+        ('ns1.dns.nic.aaa', '2610:a1:1071:0:0:0:0:2'),
+        ('ns5.dns.nic.aaa', '156.154.157.2'),
+        ('ns5.dns.nic.aaa', '2610:a1:1075:0:0:0:0:2')
+        ],
     'last_update': datetime.date(2016, 11, 8),
     'registration': datetime.date(2015, 8, 13)
 }
