@@ -9,7 +9,7 @@ iana = Iana.tld_list()
 print(iana)
 ```
 
-```json
+```javascript
 [<TLD: aaa>, <TLD: aarp>, <TLD: abarth>, <TLD: abb>, <TLD: abbott>,]
 ```
 
@@ -17,7 +17,7 @@ print(iana)
 print(vars(iana[0]))
 ```
 
-```json
+```javascript
 {
     'name': 'aaa',
     'idna': 'aaa',
@@ -35,7 +35,7 @@ iana[0].details()
 print(vars(iana[0]))
 ```
 
-```json
+```javascript
 {
     'name': 'aaa',
     'idna': 'aaa',
