@@ -3,16 +3,23 @@
 Extracting top-level-domain information from Internet Assigned Numbers
 Authority (IANA) website.
 
-
+### List of all TopLevelDomains
 ```python
 iana = Iana.tld_list()
 print(iana)
 ```
 
 ```javascript
-[<TLD: aaa>, <TLD: aarp>, <TLD: abarth>, <TLD: abb>, <TLD: abbott>,]
+[
+    <TLD: aaa>,
+    <TLD: aarp>,
+    <TLD: abarth>,
+    <TLD: abb>,
+    <TLD: abbott>,
+]
 ```
 
+### TLD Object
 ```python
 print(vars(iana[0]))
 ```
@@ -29,7 +36,7 @@ print(vars(iana[0]))
 }
 ```
 
-
+### Fetching details (nameserver, registration) for TLD object
 ```python
 iana[0].details()
 print(vars(iana[0]))
