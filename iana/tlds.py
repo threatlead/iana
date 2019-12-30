@@ -1,32 +1,7 @@
 from pyquery import PyQuery
-import re
 from datetime import datetime
-
-
-class Iana:
-    """
-    Iana website scraper
-    """
-    base_url = 'http://www.iana.org'
-    # todo - add parser for port numbers
-    # port_numbers = 'http://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml'
-
-    @classmethod
-    def tld_list(cls):
-        """
-        Get list of TLDs
-        :return: list of TLDs
-        """
-        root_db_url = '{0}/domains/root/db'.format(cls.base_url)
-        pq = PyQuery(url=root_db_url)
-        tlds = []
-        for row in pq.find('table#tld-table > tbody > tr').items():
-            tld = row('td').eq(0).find('span > a').attr['href']
-            tld = tld.replace('/domains/root/db/', '').replace('.html', '').strip()
-            tld_type = row('td').eq(1).text().strip()
-            desc = row('td').eq(2).text().strip()
-            tlds.append(Tld(name=tld, tld_type=tld_type, description=desc))
-        return tlds
+from .iana import Iana
+import re
 
 
 class Tld:
@@ -45,9 +20,24 @@ class Tld:
     def __repr__(self):
         return '<TLD: {0}>'.format(self.name)
 
+    @classmethod
+    def get_all(cls):
+        """
+        Get list of TLDs
+        :return: list of TLDs
+        """
+        pq = PyQuery(f'{Iana.base_url}/domains/root/db')
+        tlds = []
+        for row in pq.find('table#tld-table > tbody > tr').items():
+            tld = row('td').eq(0).find('span > a').attr['href']
+            tld = tld.replace('/domains/root/db/', '').replace('.html', '').strip()
+            tld_type = row('td').eq(1).text().strip()
+            desc = row('td').eq(2).text().strip()
+            tlds.append(Tld(name=tld, tld_type=tld_type, description=desc))
+        return tlds
+
     def details(self, ):
-        url = '{0}/domains/root/db/{1}.html'.format(Iana.base_url, self.idna)
-        pq = PyQuery(url=url)
+        pq = PyQuery(url=f'{Iana.base_url}/domains/root/db/{self.idna}.html')
         # -- nameserver
         for row in pq.find('table.iana-table > tbody > tr').items():
             nameserver = row('td').eq(0).text().strip()
